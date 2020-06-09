@@ -18,7 +18,7 @@ const CustomSylesheet = StyleSheet.create({
         marginTop: 10,
         borderRadius: 14,
         shadowColor: "#f8f8ff",
-        backgroundColor: "#00bfff"
+        backgroundColor: "#6495ed"
     },
     authTextInput: {
         borderRadius: 14,
@@ -49,4 +49,4 @@ const CustomSylesheet = StyleSheet.create({
     
 });
 
-export default CustomSylesheet
+export default CustomSylesheet;

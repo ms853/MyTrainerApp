@@ -1,43 +1,13 @@
 import React,{ Component } from "react";
 import { Text, View, ScrollView, KeyboardAvoidingView } from "react-native";
 import {  Input } from "react-native-elements";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import Icon from "react-native-vector-icons/FontAwesome5";
 import { createStackNavigator } from '@react-navigation/stack';
 import { StackActions } from "@react-navigation/native";
 
-const SignupStack = createStackNavigator();
-
-const SignupNav = () => {
-    return (
-        <SignupStack.Navigatior>
-            <SignupStack.Screen name="SignupReg" component={Sig}></SignupStack.Screen>
-        </SignupStack.Navigatior>
-
-    );
-}
-
 /*******NEEDS WORK*****/
-const SignupReg = () => {
-    return(
-        <View>
-              <Input
-                leftIcon={<Icon name='email' size={25} color='black' />}
-                placeholder="Enter Firstname" textContentType="emailAddress" 
-                label="Email Address" labelStyle={{color: '#000000', marginTop: 15 }}
-                value={email} 
-                />
-                 <Input
-                    leftIcon={<Icon name='text-password' size={25} color='black' />}
-                    placeholder="Enter Surname" textContentType="emailAddress" 
-                    label="Surname" labelStyle={{color: '#000000', marginTop: 15 }}
-                    value={email} 
-                />
-        </View>
-    );
-}
 
-
-class Signup extends Component {
+class SignupComplete extends Component {
 
     state = {
         email: '',
@@ -81,4 +51,4 @@ class Signup extends Component {
     }
 }
 
-export default Signup;
+export default SignupComplete;
