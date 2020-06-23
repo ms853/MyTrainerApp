@@ -1,29 +1,28 @@
-import React,{ Component } from "react";
+import React, { useState } from "react";
 import { Text, View, KeyboardAvoidingView} from 'react-native';
 import {  Input, Button } from "react-native-elements";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import CustomStylesheet from "../../components/Stylesheet";
 
-class PassResetScreen extends Component {
-    state = {
-        emailReset: ''
-    };
+const PassResetScreen = () => {
+    const [ emailReset, emailChange] = useState("");
 
-    render() {
-        const { emailReset } = this.state;
-        return(
-            <View>
+    const { buttonStyle, appContainer, appText} = CustomStylesheet;    
+    return(
+            <View style={appContainer}>
                <KeyboardAvoidingView behavior="padding" enabled>
                     <Input
-                        leftIcon={<Icon name='email' size={25} color='black' />}
+                        inputStyle={appText}
+                        leftIcon={<Icon name='email' size={25} color='white' />}
                         placeholder="Enter email address" textContentType="emailAddress" 
                         label="Email Address" labelStyle={{color: '#000000', marginTop: 15 }}
                         value={emailReset} 
-                        />
+                        onChangeText={(value) => emailChange(value)}
+                    />
                 </KeyboardAvoidingView> 
-                <Button title="Reset Password" />
+                <Button title="Reset Password" buttonStyle={buttonStyle} />
             </View>
         );
-    }
 }
 
 export default PassResetScreen;

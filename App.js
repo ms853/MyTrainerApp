@@ -3,17 +3,9 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { SplashScreen } from 'expo';
 import { colors, ThemeProvider } from 'react-native-elements';
 import { NavigationContainer, DarkTheme } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-
-import BottomTabNavigator from './navigation/BottomTabNavigator';
-import Login from "./src/screens/Auth/Login";
-import Signup from "./src/screens/Auth/Signup";
-
 import useLinking from './navigation/useLinking';
 import AuthStackNavigator from './navigation/StackNavigator';
 
-const Stack = createStackNavigator();
-//const INITIAL_ROUTE_NAME = "Au"
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);

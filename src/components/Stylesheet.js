@@ -3,10 +3,14 @@ import { StyleSheet, Dimensions } from "react-native";
 
 const APPHEIGHT = Dimensions.get("screen").height;
 const APPWIDTH = Dimensions.get("screen").width
-//{ marginTop: APPHEIGHT / 2}]
+
 
 const CustomSylesheet = StyleSheet.create({
-    headerSyle: {},
+    checkBoxContainer: {
+        alignSelf: 'flex-start',
+        backgroundColor: 'rgba(0,0,0,0)',
+        marginTop: 10
+    },
     authImageLogo: {
         flex: 1,
         width: "100%",
@@ -30,9 +34,16 @@ const CustomSylesheet = StyleSheet.create({
     },
     appContainer: {
         backgroundColor: "#000000",
-        //color: "#f8f8ff",
         flex: 1
       
+    },
+    cardContainerStyle: {
+        alignItems: 'center',
+        backgroundColor: "#000000",
+        shadowColor: "#000",
+        shadowOpacity: 0.50,
+        elevation: 15,
+        borderRadius: 10
     },
     authContainer: {
         alignItems: "center",
