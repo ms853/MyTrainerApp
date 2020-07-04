@@ -6,10 +6,14 @@ import CustomStylesheet from "../../components/Stylesheet";
 
 /*******NEEDS WORK*****/
 
-const SignupRegPhase2 = () => {
+const SignupRegPhase2 = ({ route, navigation }) => {
 
     const { appText, appContainer, buttonStyle, authImageLogo } = CustomStylesheet;
+    const { signupData } = route.params;
+    console.log("Check here: {0}", signupData);
     return(
+        
+        
         <View style={appContainer}>
             
             <KeyboardAvoidingView behavior="padding" enabled>

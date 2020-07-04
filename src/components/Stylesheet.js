@@ -14,7 +14,7 @@ const CustomSylesheet = StyleSheet.create({
     authImageLogo: {
         flex: 1,
         width: "100%",
-        height: APPHEIGHT / 2,
+        height: APPHEIGHT / 4,
         resizeMode: "contain",
         alignSelf: "center"
     },
