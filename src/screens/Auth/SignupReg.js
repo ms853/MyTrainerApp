@@ -1,34 +1,37 @@
-import React, { useState, useReducer } from "react";
-import { View, Text, KeyboardAvoidingView, Image } from "react-native";
+import React, { useState } from "react";
+import { View, Text, KeyboardAvoidingView, Image, StyleSheet } from "react-native";
 import {  Input, Button, CheckBox, Card } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 import CustomSytlesheet from "../../components/Stylesheet";
 import { ScrollView } from "react-native-gesture-handler";
 
-const reducer = (state, action) => {
-    switch(action.valueChanged) {
-        case 'firstname':
-            return { ...state, firstname: state.firstname }
-        case 'surname': 
-            return {...state, surname: state.surname }
-        case 'phoneNumber': 
-            return {...state, phoneNumber: state.phoneNumber }
-        default:
-            return state;
-    }
-};
-export default function SignupReg({ navigation }) {
-    const [state, dispatch] = useReducer(reducer, { firstname: '', surname: '', phoneNumber: ''});
+// const reducer = (state, action) => {
+//     switch(action.valueChanged) {
+//         case 'firstname':
+//             return { ...state, firstname: state.firstname }
+//         case 'surname': 
+//             return {...state, surname: state.surname }
+//         case 'phoneNumber': 
+//             return {...state, phoneNumber: state.phoneNumber }
+//         default:
+//             return state;
+//     }
+// };
 
-    // const [ firstname, firstnameChange ] = useState("");
-    // const [surname, surnameChange] = useState("");
-    // const [phoneNumber, phoneChange] = useState("");
-     const [genderMale, mcheckBoxChange] = useState(false);
-     const [genderFemale, fcheckBoxChange] = useState(false);
-    // const [dataArray, setArray] = useState([]);
+function SignupReg({ navigation }) {
 
-    const { appContainer, appText, cardContainerStyle, authTextInput, buttonStyle, checkBoxContainer, authImageLogo } = CustomSytlesheet;
-    
+    const [state, stateChanged] = useState({ firstname: '', surname: '', phoneNumber: ''}); 
+
+    const [ firstname, firstnameChange ] = useState("");
+    const [surname, surnameChange] = useState("");
+    const [phoneNumber, phoneChange] = useState("");
+    const [genderMale, mcheckBoxChange] = useState(false);
+    const [genderFemale, fcheckBoxChange] = useState(false);
+
+
+    const { appContainer, appText,  authTextInput, buttonStyle, checkBoxContainer, authImageLogo } = CustomSytlesheet;
+    var { cardContainerStyle } = styles;
+
     return(
         <View style={appContainer}>
             <ScrollView>
@@ -36,26 +39,23 @@ export default function SignupReg({ navigation }) {
             <KeyboardAvoidingView behavior="padding" enabled>   
 
             <Card containerStyle={cardContainerStyle}>
-                <View style={{ marginTop: 20}}>
+                <View>
                 <Input 
-                    underlineColorAndroid="rgba(0,0,0,0)"
                     inputStyle={appText}
                     containerStyle={authTextInput}
                     leftIcon={<Icon name='user' size={25} color='white' />}
                     placeholder="Enter Firstname" textContentType="givenName"  
-                    value={firstname} 
-                    onChangeText={(value) => firstnameChange(value)}
-                    onEndEditing={(value) => setArray([...dataArray, value])}
+                    value={state.firstname} 
+                    onChangeText={(value) => stateChanged({...state, firstname: value})}
                 />
                 <Input
-                    underlineColorAndroid="rgba(0,0,0,0)"
                     inputStyle={appText}
                     containerStyle={authTextInput}
                     leftIcon={<Icon name='user' size={25} color='white' />}
                     placeholder="Enter Surname" textContentType="familyName" 
-                    value={surname} 
-                    onChangeText={(value) => surnameChange(value)}
-                    onEndEditing={(value) => setArray([...dataArray, value])}
+                    value={state.surname} 
+                    onChangeText={(value) => stateChanged({...state, surname: value})}
+                  
                 />
                 <Input
                     underlineColorAndroid="rgba(0,0,0,0)"
@@ -63,36 +63,17 @@ export default function SignupReg({ navigation }) {
                     containerStyle={authTextInput}
                     leftIcon={<Icon name="mobile-phone" size={25} color='white' />}
                     placeholder="Enter Your Mobile Number" textContentType="telephoneNumber" 
-                    value={phoneNumber} 
-                    onChangeText={(value) => phoneChange(value)}
-                    onEndEditing={(value) => setArray([...dataArray, value])}
-                />
-                <Text style={[appText, {marginTop: 10, textAlign: 'center', textDecorationLine: 'underline'}]}>What is your gender?</Text>
+                    value={state.phoneNumber} 
+                    onChangeText={(value) => stateChanged({...state, phoneNumber: value})}
             
-                <CheckBox 
-                    center
-                    textStyle={appText}
-                    containerStyle={checkBoxContainer}
-                    title="Male"
-                    checkedIcon='dot-circle-o'
-                    uncheckedIcon='circle-o'
-                    checked={genderMale}
-                    onPress={() => mcheckBoxChange(!genderMale)}
-                    onIconPress={() => setArray(...dataArray, genderMale)}
                 />
-                <CheckBox
-                    center
-                    textStyle={appText}
-                    containerStyle={checkBoxContainer}
-                    title='Female'
-                    checkedIcon='dot-circle-o'
-                    uncheckedIcon='circle-o'
-                    checked={genderFemale}
-                    onPress={() => fcheckBoxChange(!genderFemale)}
-                    onIconPress={() => setArray(...dataArray, genderMale)}
-                />
+                {/* <Text style={[appText, {marginTop: 10, textAlign: 'center', textDecorationLine: 'underline'}]}>What is your gender?</Text> */}
                 </View>
-                    <Button title="Continue" buttonStyle={buttonStyle} onPress={() => navigation.navigate("SignupRegPhase2", {"singupData": dataArray})}/>
+
+                <View style={{ marginTop: 12, marginBottom: 12 }}>
+                    <Button title="Continue" buttonStyle={buttonStyle} onPress={() => navigation.push("SignupRegPhase2", {data: state})}/>
+                </View>
+                  
                 </Card>
             </KeyboardAvoidingView>
             </ScrollView>
@@ -100,4 +81,19 @@ export default function SignupReg({ navigation }) {
         </View>
     );
 
+    
+
 }
+
+const styles = {
+    cardContainerStyle: {
+        alignItems: 'center',
+        backgroundColor: "#000000",
+        //shadowColor: "#000",
+        shadowOpacity: 0.50,
+        elevation: 15,
+        borderRadius: 10
+    }
+}
+
+export default SignupReg;

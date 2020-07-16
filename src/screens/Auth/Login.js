@@ -23,7 +23,7 @@ class LoginScreen extends Component {
         const { headerSyle, authTextInput, appContainer, appText, authImageLogo, buttonStyle, cardContainerStyle } = CustomSylesheet;
 
         var { error, email, password, emailReset, loading, visible } = this.state;
-        const { navigation } =   this.props;
+        const { navigation } = this.props;
 
         return (
             <View style={appContainer}>
