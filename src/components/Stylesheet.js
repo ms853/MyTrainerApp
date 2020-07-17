@@ -30,7 +30,8 @@ const CustomSylesheet = StyleSheet.create({
         borderColor: "grey",
         borderWidth: 1,
         marginTop: 10,
-        height: 40
+        height: 40,
+        width: 200
     },
     appContainer: {
         backgroundColor: "#000000",

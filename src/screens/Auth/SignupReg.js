@@ -13,7 +13,7 @@ import { ScrollView } from "react-native-gesture-handler";
 //             return {...state, surname: state.surname }
 //         case 'phoneNumber': 
 //             return {...state, phoneNumber: state.phoneNumber }
-//         default:
+//         default:  
 //             return state;
 //     }
 // };
@@ -22,15 +22,8 @@ function SignupReg({ navigation }) {
 
     const [state, stateChanged] = useState({ firstname: '', surname: '', phoneNumber: ''}); 
 
-    const [ firstname, firstnameChange ] = useState("");
-    const [surname, surnameChange] = useState("");
-    const [phoneNumber, phoneChange] = useState("");
-    const [genderMale, mcheckBoxChange] = useState(false);
-    const [genderFemale, fcheckBoxChange] = useState(false);
-
-
-    const { appContainer, appText,  authTextInput, buttonStyle, checkBoxContainer, authImageLogo } = CustomSytlesheet;
-    var { cardContainerStyle } = styles;
+    const { appContainer, appText, cardContainerStyle, authTextInput, buttonStyle, authImageLogo } = CustomSytlesheet;
+    //var { cardContainerStyle } = styles;
 
     return(
         <View style={appContainer}>
