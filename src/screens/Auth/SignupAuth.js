@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Text, View, KeyboardAvoidingView } from "react-native";
-import { Input, Button } from "react-native-elements";
+import { Text, View, KeyboardAvoidingView, Image } from "react-native";
+import { Input, Button, Card } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 import {ScrollView} from 'react-native-gesture-handler';
 import CustomSylesheet from "../../components/Stylesheet";
-import { render } from "react-dom";
+
 
 // const passSignupAuthData = (navigationScreen, data) => {
 //     this.props.navigation.navigate(navigationScreen, {authData : data});
@@ -29,15 +29,22 @@ class SignupAuth extends Component{
     };
 
     render() {
-        const { headerSyle, authTextInput, authContainer, appContainer, appText, authImageLogo, buttonStyle } = CustomSylesheet;
+        const { headerSyle, authTextInput, authContainer, appContainer, appText, authImageLogo, buttonStyle, cardContainerStyle } = CustomSylesheet;
 
         const {email, username, password, loading, visible, isValid, confirmPassword, error} = this.state;
-        
+        const { route, navigation } = this.props;
+        const { formData, otherParams } = route.params;
+
+        console.log('LOOOK :', formData);
+        console.log('YOYO :', otherParams);
         return(
             <View style={appContainer}>
                 <KeyboardAvoidingView behavior="padding" enabled>
+                <Image source={require('../../../assets/images/AppLogo.png')} style={authImageLogo}/>
+                
                     <ScrollView>
                         <View style={authContainer}>
+                        <Card containerStyle={cardContainerStyle}>
                             <Input
                                 inputStyle={appText}
                                 containerStyle={authContainer}
@@ -73,6 +80,8 @@ class SignupAuth extends Component{
                                 onChangeText={(value) => this.setState({ confirmPassword: value})}
                                 />
                              <Button title="Sign Up" buttonStyle={[buttonStyle, { width: 200}]}  />
+                        </Card>
+                            
                         </View>
 
                     </ScrollView>
