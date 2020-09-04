@@ -29,7 +29,8 @@ const CustomSylesheet = StyleSheet.create({
         backgroundColor: 'rgba(0,0,0,0.2)',
         borderColor: "grey",
         borderWidth: 1,
-        marginTop: 10,
+        marginTop: 20,
+        marginBottom: 30,
         height: 40,
         width: 200
     },
@@ -55,6 +56,11 @@ const CustomSylesheet = StyleSheet.create({
         color: "#f8f8ff", 
         fontSize: 14,
         fontFamily: "Roboto"
+    },
+    sectionListStyle: {
+        backgroundColor: "#fff",
+        fontFamily: "Roboto",
+        marginHorizontal: 16
     }
 
     

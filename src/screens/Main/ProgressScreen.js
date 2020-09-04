@@ -4,13 +4,13 @@
 */
 import React, { Component } from "react";
 import { AsyncStorage, View, Text } from "react-native";
-
+import CustomStylesheet from "../../components/Stylesheet"; 
 class ProgressScreen extends Component {
 
     render() {
-
+        const { appContainer, appText } = CustomStylesheet;
         return(
-            <View>
+            <View style={appContainer}> 
                 <Text>ProgressScreen</Text>
             </View>
         );

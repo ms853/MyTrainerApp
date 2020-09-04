@@ -5,7 +5,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import CustomStylesheet from "../../components/Stylesheet";
 
 const SCREEN_WIDTH = Dimensions.get("screen").width;
-const SCREEN_HEIGHT = Dimensions.get("screen").height;
+const SCREEN_HEIGHT = Dimensions.get("screen").height;        
 /**NEEDS WORK*/
 function heighlightColor(isPressed) {
     if(isPressed == true) {
@@ -17,6 +17,12 @@ function heighlightColor(isPressed) {
 }
 
 /*
+Create a validation Boolean method on each screen
+Create an error field for each input (errorEmail, errorPassword)
+Make sure validateUser passes before passing to the next screen
+
+
+
 function setColor () {
     switch (action.type) {
         case 'increment':
@@ -33,6 +39,7 @@ const SignupRegPhase2 = ({ route, navigation }) => {
 
     const { appText, appContainer, buttonStyle, authImageLogo } = CustomStylesheet;
     const { data } = route.params;
+    console.log("Object Received ----> ", data);
     //console.log("Check here: " +  data.firstname + " " + data.surname);
     const [roles, setRole] = useState({ role: '' });
     console.log("role: ", roles); 

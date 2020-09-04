@@ -19,6 +19,7 @@ export default function BottomTabNavigator({ navigation, route }) {
   // https://reactnavigation.org/docs/en/screen-options-resolution.html
   navigation.setOptions({
      headerTitle: getHeaderTitle(route),
+     headerShown: true 
     });
 
   return (
@@ -44,7 +45,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         component={SettingsScreen}  
         options={{ 
           title: 'Settings',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="setting" />,
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="setting" />,  
         }}
       />
      
