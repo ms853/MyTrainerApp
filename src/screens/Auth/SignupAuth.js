@@ -66,6 +66,7 @@ class SignupAuth extends Component{
                             <Input
                                 inputStyle={appText}
                                 containerStyle={authContainer}
+                                inputContainerStyle={[authTextInput, { marginBottom: 5, marginTop: 5 }]}
                                 leftIcon={<Icon name='user' size={25} color='white' />}
                                 placeholder="Enter Email Address" textContentType="emailAddress" 
                                 value={email} 
@@ -75,6 +76,7 @@ class SignupAuth extends Component{
                             <Input
                                 inputStyle={appText}
                                 containerStyle={authContainer}
+                                inputContainerStyle={[authTextInput, { marginBottom: 5, marginTop: 5 }]}
                                 leftIcon={<Icon name='user' size={25} color='white' />}
                                 placeholder="Enter Username" textContentType="username" 
                                 value={username} 
@@ -84,6 +86,7 @@ class SignupAuth extends Component{
                             <Input
                                 inputStyle={appText}
                                 containerStyle={authContainer}
+                                inputContainerStyle={[authTextInput, { marginBottom: 5, marginTop: 5 }]}
                                 leftIcon={<Icon name='lock' size={25} color='white' />}
                                 placeholder="Enter Password" textContentType="password" 
                                 secureTextEntry
@@ -96,6 +99,7 @@ class SignupAuth extends Component{
                             <Input
                                 inputStyle={appText}
                                 containerStyle={authContainer}
+                                inputContainerStyle={[authTextInput, { marginBottom: 5, marginTop: 5 }]}
                                 leftIcon={<Icon name='lock' size={25} color='white' />}
                                 placeholder="Confirm Password" textContentType="newPassword"
                                 secureTextEntry 
