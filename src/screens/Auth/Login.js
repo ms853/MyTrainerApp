@@ -13,7 +13,6 @@ class LoginScreen extends Component {
         emailReset: '', //email state for resetting password.
         loading: false, //state for handling the loading screen.
         error: '',
-        
         visible: false //modal state
     };
 

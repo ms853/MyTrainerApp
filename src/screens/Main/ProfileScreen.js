@@ -25,10 +25,10 @@ class ProfileScreen extends Component {
                 />
                  <Text style={[appText, { textAlign: "center", marginTop: 10}]}>Name: USER</Text>
                 <Text style={[appText, { textAlign: "center", marginTop: 10}]}>Member since ...date</Text>
-                <SafeAreaView>
+                {/* <SafeAreaView>
                 <SectionList style={sectionListStyle} />
                 
-                </SafeAreaView>
+                </SafeAreaView> */}
             </View>
         );
     }

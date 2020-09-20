@@ -13,7 +13,6 @@ const APPHEIGHT = Dimensions.get("screen").height;
 class SignupAuth extends Component{
   
     state = {
-        previousData: [],
         email: '',
         username: '',
         password: '',
@@ -21,29 +20,57 @@ class SignupAuth extends Component{
         loading: false,
         visible: false,
         isValid: false,
-        error: ''
+        passwordError: '',
+        emailError: ''
+
     };
 
     renderForm = () => { 
-        return(
-            <View>
-                <ActivityIndicator color="white" size={15} />
-            </View>
-        );
+        if(this.state.loading) {
+            //load a loading screen
+            return(
+                <View>
+                    <ActivityIndicator color="white" size={15} />
+                </View>
+            );
+        }
+        //return the form.
     };
 
     checkConfirmPassword = (passwordText) => {
-        //const REGEX = "";
+        
         const { password, confirmPassword } = this.state;
         this.setState({ confirmPassword: passwordText});
         
         if(confirmPassword != password) {
-            this.setState({ error: 'The password you have entered does not match the previous password, please check and re-enter them again.'});
+            this.setState({ passwordError: 'The password you have entered does not match the previous password, please check and re-enter them again.'});
         }else if(confirmPassword == password) {
-            this.setState({error: ''});
+            this.setState({passwordError: ''});
+        }
+    };
+
+    validatePassword() {
+        //const PASSWORD_REGEX = //;
+    }
+
+    validateEmailAddress(email) {
+        const EMAIL_REGEX = /^(?:[a-zA-Z\d@\.]*)?$/;
+        if(!EMAIL_REGEX.test(email)) {
+            this.setState({validationError: 'Error! Enter a valid email address with the following format: mytrainer@domain.com'});
+            return false;
+        }else{
+            this.setState({validationError: ''});
         }
         
-    };
+        return true;
+    }
+
+    /**
+     * Method for authenticating the new user. 
+     */
+    signupNewUser = () => {
+         
+    }
 
     render() {
         const { headerSyle, authTextInput, authContainer, appContainer, appText, authImageLogo, buttonStyle, cardContainerStyle } = CustomSylesheet;
