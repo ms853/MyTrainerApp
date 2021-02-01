@@ -57,30 +57,29 @@ class SignupReg extends Component {
         
     }
    
+    //Change it back to isValid==true if it does now work.
     validatePhoneNumber() {
         const PHONE_REGEX = /\d/;
         var isValid = PHONE_REGEX.test(this.state.phoneNumber);
-        if(isValid == false) {
-            this.setState({ phonenumberError: 'You need to enter a valid phone number!'});
-            return false;
+        if(isValid) {
+            this.setState({ phonenumberError: ''});
+            return true;
         }
-        this.setState({ phonenumberError: ''});
-        return true;
+        this.setState({ phonenumberError: 'You need to enter a valid phone number!'});
+            return false;
+       
     }
 
     proceedToNextScreen = (screenName, data) => {
         const { navigation } = this.props;
         
         if(this.validateFirstname() === false || this.validateSurname() === false || this.validatePhoneNumber() === false) {
-            //Alert.alert("My Trainer", "Warning! There are still errors on this page.\n\nCheck that the data you have provided is correct before you continue.");
-            //console.log("HIT ME!!!!!");
             Alert.alert("My Trainer", "Required fields need to be filled in before you can proceed.");
             return;
         }else{
             navigation.navigate(screenName, {data: data}); 
         }
-             
-        
+                     
     };
 
     render() {

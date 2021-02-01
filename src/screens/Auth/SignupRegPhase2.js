@@ -1,7 +1,6 @@
-import React,{ useState, useReducer } from "react";
+import React,{ useState, } from "react";
 import { Text, View, ScrollView, TouchableOpacity, Dimensions, ImageBackground, Image } from "react-native";
-import {  Button, Tile } from "react-native-elements";
-import Icon from "react-native-vector-icons/FontAwesome";
+import {  Button } from "react-native-elements";
 import CustomStylesheet from "../../components/Stylesheet";
 
 const SCREEN_WIDTH = Dimensions.get("screen").width;
@@ -16,25 +15,12 @@ function heighlightColor(isPressed) {
   
 }
 
-/*
-Create a validation Boolean method on each screen
-Create an error field for each input (errorEmail, errorPassword)
-Make sure validateUser passes before passing to the next screen
-
-
-
-function setColor () {
-    switch (action.type) {
-        case 'increment':
-          return {count: state.count + 1};
-        case 'decrement':
-          return {count: state.count - 1};
-        default:
-          throw new Error();
-      }
-}
-
-*/
+/**
+ * Is a functional class component with react-hooks. 
+ * It records the user's choice and passes the rest of the data to the final signup screen.
+ * @param {*route: Prop object provided by react-navigation to access data sent from the previous page. } this.props
+ * @param {*navigation: Prop object provided by react-navigation, which will be used to navigate.} this.props
+ */
 const SignupRegPhase2 = ({ route, navigation }) => {
 
     const { appText, appContainer, buttonStyle, authImageLogo } = CustomStylesheet;

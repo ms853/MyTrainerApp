@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Dimensions } from "react-native";
 
 const APPHEIGHT = Dimensions.get("screen").height;
-const APPWIDTH = Dimensions.get("screen").width
+const APPWIDTH = Dimensions.get("screen").width;
 
 
 const CustomSylesheet = StyleSheet.create({
