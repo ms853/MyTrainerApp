@@ -5,6 +5,8 @@ import { Input, Button, Card } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 import {ScrollView} from 'react-native-gesture-handler';
 import CustomSylesheet from "../../components/Stylesheet";
+import firebase from "firebase";
+
 
 const APPHEIGHT = Dimensions.get("screen").height;
 
@@ -32,8 +34,10 @@ class SignupAuth extends Component{
         
         if(this.getFormData('prevRegData') === null) 
         {
-            this.saveFormData(authObject); 
-            var formObj = this.getFormData('prevRegData');
+            await this.saveFormData(authObject); 
+
+        }else{
+            var formObj = await this.getFormData('prevRegData');
             console.log("DATA --> ", formObj);
         }
        
@@ -104,7 +108,7 @@ class SignupAuth extends Component{
                 buttonStyle={[buttonStyle, { width: 200, alignSelf: 'center' }]} 
                 onPress={this.signupNewUser.bind(this)}
                 />
-               
+                 
             </Card> 
                 
             );
@@ -180,11 +184,15 @@ class SignupAuth extends Component{
     }
 
     getFormData = async(savedDataKey) => {
+
         try{
-          await AsyncStorage.getItem(savedDataKey);      
+            
+            var objectToReturn = await AsyncStorage.getItem(savedDataKey);      
         }catch(error){
             console.log(error);
         }
+
+        return objectToReturn;
     }
 
     render() {

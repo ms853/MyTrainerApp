@@ -5,6 +5,7 @@ import { colors, ThemeProvider } from 'react-native-elements';
 import { NavigationContainer, DarkTheme } from '@react-navigation/native';
 import useLinking from './navigation/useLinking';
 import AuthStackNavigator from './navigation/StackNavigator';
+import firebase from "firebase";
 
 
 export default function App(props) {
@@ -12,6 +13,23 @@ export default function App(props) {
   const [initialNavigationState, setInitialNavigationState] = React.useState();
   const containerRef = React.useRef();
   const { getInitialState } = useLinking(containerRef);
+
+  //Firebase Config
+  var config = {
+    apiKey: "AIzaSyADMIVkRVub-JmfE4wR50bu11_ohfLVpIk",
+    authDomain: "mytrainer-testapp.firebaseapp.com",
+    projectId: "mytrainer-testapp",
+    storageBucket: "mytrainer-testapp.appspot.com",
+    messagingSenderId: "998250210107",
+    appId: "1:998250210107:web:dd4c912ab5169e91004d1e",
+    measurementId: "G-57NY15FYY4"
+  };
+
+  !firebase.apps.length ? firebase.initializeApp(config) : firebase.app();
+
+
+  
+  firebase.analytics();
 
   const themeObj = {
     colors: {
@@ -46,6 +64,8 @@ export default function App(props) {
 
     loadResourcesAndDataAsync();
   }, []);
+
+  
 
 //screen name was Root.       
   if (!isLoadingComplete && !props.skipLoadingScreen) {
