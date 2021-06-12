@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Text, View, KeyboardAvoidingView, Image, Dimensions, ActivityIndicator } from "react-native";
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Input, Button, Card } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 import {ScrollView} from 'react-native-gesture-handler';
@@ -25,26 +25,11 @@ class SignupAuth extends Component{
         error: ''
     };
 
-    componentDidMount() {
-        const { route } = this.props;
-        const { formData, otherParams } = route.params;
-        var authObject = Object.assign(formData, otherParams);
 
-        
-        
-        if(this.getFormData('prevRegData') === null) 
-        {
-            await this.saveFormData(authObject); 
-
-        }else{
-            var formObj = await this.getFormData('prevRegData');
-            console.log("DATA --> ", formObj);
-        }
-       
-    }
-
+    //JSX Function for rendering UI (conditional rendering)
     renderForm = () => { 
         const { headerSyle, authTextInput, authContainer, appContainer, appText, authImageLogo, buttonStyle, cardContainerStyle } = CustomSylesheet;
+
         const {email, username, password, loading, visible, isValid, confirmPassword, emailError, passwordError, error} = this.state;
 
         if(this.state.loading) {
@@ -164,7 +149,7 @@ class SignupAuth extends Component{
 
          try{
                  
-
+        
          }catch(error) {
             this.setState({
                 loading: false, email: '', username: '', password: '',
@@ -173,10 +158,10 @@ class SignupAuth extends Component{
          }
     }
 
-    saveFormData = async(dataToSave) => {
+    saveFormData = async(objectKey, dataToSave) => {
         //var { formData, otherParams } = route.params;
         try{
-            await AsyncStorage.setItem('prevRegData',dataToSave);
+            await AsyncStorage.setItem(objectKey, dataToSave);
 
         }catch(error){
             console.log(error);
@@ -185,8 +170,7 @@ class SignupAuth extends Component{
 
     getFormData = async(savedDataKey) => {
 
-        try{
-            
+        try{            
             var objectToReturn = await AsyncStorage.getItem(savedDataKey);      
         }catch(error){
             console.log(error);
@@ -195,15 +179,31 @@ class SignupAuth extends Component{
         return objectToReturn;
     }
 
+    storeParams = async(objectKey, objectToSave) => {
+        
+        var storedObj = await this.getFormData(objectKey);
+
+        if(storedObj == null) {
+            await this.saveFormData(objectKey, objectToSave);
+            console.log(`Object Saved: ${objectToSave}`);
+        }else{
+            return;
+        }
+    };
+
     render() {
         const { headerSyle, authTextInput, authContainer, appContainer, appText, authImageLogo, buttonStyle, cardContainerStyle } = CustomSylesheet;
 
         const {email, username, password, loading, visible, isValid, confirmPassword, emailError, passwordError, error} = this.state;
         const { route, navigation } = this.props;
         const { formData, otherParams } = route.params;
+        
+        console.log('LOOOK :', formData);
+        console.log('YOYO :', otherParams);
 
-        //console.log('LOOOK :', formData);
-        //console.log('YOYO :', otherParams);
+        this.storeParams("signup1", formData);
+        this.storeParams("signup2", otherParams);
+
         return(
             <View style={appContainer}>
                  <ScrollView>

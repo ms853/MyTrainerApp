@@ -55,6 +55,7 @@ const SignupRegPhase2 = ({ route, navigation }) => {
                         </ImageBackground>
                     </TouchableOpacity>
                 </View>
+                {/* No Support for Gym users for this app. That will be a different app.
                 <View style={{marginBottom: 20, marginTop: 20}}>
                     <TouchableOpacity onPress={() =>  setRole({ role: 'Gym-User' })}>
                         <ImageBackground source={require('../../../assets/images/gym-user.jpg')} style={[styles.imageStyle, { alignSelf: "center"}]}> 
@@ -62,7 +63,7 @@ const SignupRegPhase2 = ({ route, navigation }) => {
                         </ImageBackground>
                     </TouchableOpacity>
                 </View>
-               
+                */}
                 <Button 
                     title="Continue" 
                     buttonStyle={[buttonStyle, {width: 200, alignSelf: 'center'}]} 
